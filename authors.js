@@ -6,9 +6,9 @@ module.exports = {
 var path = require('path')
 var ms = require('ms')
 var async = require('async')
-var underscore = _ = require('underscore')
-var request = _.throttle(require('request'), 20);
+var request = require('request')
 var exec = require('child_process').exec
+var log;
 
 // returns array of strings like
 //    "firstname lastname <email@host.com>"
@@ -49,25 +49,27 @@ function lookupGithubLogin(p, print, callback) {
   var searchURI = 'https://api.github.com/legacy/user/search/'
   var options = { json: true }
   function cb (err, p) {
-    // if (print) console.log(toMarkdown(p))
+    // if (print) log(toMarkdown(p))
     callback(err, p)
   }
   if (print) process.stdout.write('.')
 
-  request(emailURI + encodeURIComponent(p.email), options, function (err, res, data) {
+  request(emailURI + encodeURIComponent(p.email), options, onEmail)
+  function onEmail(err, res, data) {
     if (data.user) {
       p.login = data.user.login
       return cb(err, p)
     }
-    request(searchURI + encodeURIComponent(p.name), options, function (err, res, data) {
-      if (data.users && data.users[0]) {
-        p.login = data.users[0].login
-        return cb(err, p)
-      }
-      cb(err, p)
-    })
-  });
-};
+    request(searchURI + encodeURIComponent(p.name), options, onName)
+  }
+  function onName(err, res, data) {
+    if (data.users && data.users[0]) {
+      p.login = data.users[0].login
+      return cb(err, p)
+    }
+    cb(err, p)
+  }
+}
 
 function toData(ppl) {
   return ppl
@@ -81,26 +83,30 @@ function toData(ppl) {
 
 function toMarkdown(p) {
   return '- '
-  + '[' + p.name + ' aka `'+p.login+'`]'
+  + '[' + p.name + ' aka `' + p.login + '`]'
   + '(https://github.com/' + p.login + ')'
 }
 
 function authors(path, print, cb) {
-  cb = cb || function () {}
-
+  cb = cb || function (err) { if (err) log(err.stack) }
+  log = function log() {
+    if (print) console.log.apply(console.log, arguments)
+  }
   process.chdir(path)
+
   nameAndEmail(path, function (er, ppl) {
     var list = toData(ppl)
     var tasks = []
 
-    if (print) console.log('Fetching', list.length, 'logins from github based on email/name...')
-
+    if (print) {
+      log('Fetching ' + list.length + ' logins from github based on'
+      + ' email/name...')
+    }
     list.forEach(function (p) {
       tasks.push(async.apply(lookupGithubLogin, p, print))
     })
-    async.series(tasks, function (err, results) {
+    async.parallel(tasks, function (err, results) {
       var seen = {}
-      console.log(results)
       var uresults = results
         .map(function (p) {
           if (seen[p.login]) return null;
@@ -111,13 +117,13 @@ function authors(path, print, cb) {
           return p
         })
       if (print) {
-        console.log('')
-        console.log('## Contributors')
-        console.log('Ordered by date of first contribution.')
-        console.log('[Auto-generated](http://github.com/dtrejo/authors) on '
+        log('')
+        log('## Contributors')
+        log('Ordered by date of first contribution.')
+        log('[Auto-generated](http://github.com/dtrejo/authors) on '
           + new Date() + '.')
-        console.log()
-        console.log(uresults.map(toMarkdown).join('\n'))
+        log()
+        log(uresults.map(toMarkdown).join('\n'))
       }
       cb(err, uresults)
     })
@@ -125,5 +131,5 @@ function authors(path, print, cb) {
 }
 
 if (!module.parent) {
-  console.log(gitAuthors())
+  console.log(authors('./', true))
 }
