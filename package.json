@@ -1,0 +1,31 @@
+{
+  "name": "authors",
+  "version": "0.0.0",
+  "description": "print a markdown list of authors to your git repo, incl github usernames",
+  "main": "authors.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "github",
+    "git",
+    "authors",
+    "username",
+    "markdown",
+    "contributors",
+    "project"
+  ],
+  "author": "David Trejo",
+  "license": "MIT",
+  "dependencies": {
+    "github": "~0.1.3",
+    "request": "~2.9.203",
+    "ms": "~0.1.0",
+    "underscore": "~1.3.3",
+    "async": "~0.1.22"
+  },
+  "preferGlobal": true,
+  "bin": {
+    "authors": "./cli.js"
+  }
+}
