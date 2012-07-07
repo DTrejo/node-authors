@@ -1,7 +1,7 @@
 {
   "name": "authors",
   "version": "0.0.0",
-  "description": "print a markdown list of authors to your git repo, incl github usernames",
+  "description": "print a markdown list of authors/contributors to your git repo, including github usernames",
   "main": "authors.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -27,5 +27,10 @@
   "preferGlobal": true,
   "bin": {
     "authors": "./cli.js"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/DTrejo/node-authors.git"
   }
 }
