@@ -1,6 +1,6 @@
 {
   "name": "authors",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "print a markdown list of authors/contributors to your git repo, including github usernames",
   "main": "authors.js",
   "scripts": {
