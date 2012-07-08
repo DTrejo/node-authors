@@ -8,7 +8,7 @@ var ms = require('ms')
 var async = require('async')
 var request = require('request')
 var exec = require('child_process').exec
-var log;
+var log
 
 // returns array of strings like
 //    "firstname lastname <email@host.com>"
@@ -18,7 +18,7 @@ var log;
 // - might not have real name
 function gitAuthors(cb) {
   return exec('git log --pretty="%an <%ae>"', function (er, stdout, stderr) {
-    if (er || stderr) throw new Error(er || stderr);
+    if (er || stderr) throw new Error(er || stderr)
     return cb(null, stdout.split('\n').reverse())
   })
 }
@@ -31,7 +31,7 @@ function nameAndEmail(path, cb) {
 }
 
 function unique(list) {
-  var seen = {};
+  var seen = {}
   return list
     .map(function (e) {
       if (seen[e]) return null
@@ -109,7 +109,7 @@ function authors(path, print, cb) {
       var seen = {}
       var uresults = results
         .map(function (p) {
-          if (seen[p.login]) return null;
+          if (seen[p.login]) return null
           seen[p.login] = true
           return p
         })
@@ -120,9 +120,9 @@ function authors(path, print, cb) {
         log('')
         log('## Contributors')
         log('Ordered by date of first contribution.')
-        log('[Auto-generated](http://github.com/dtrejo/authors) on '
+        log('[Auto-generated](http://github.com/dtrejo/node-authors) on '
           + new Date() + '.')
-        log()
+        log('')
         log(uresults.map(toMarkdown).join('\n'))
       }
       cb(err, uresults)
