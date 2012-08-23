@@ -1,3 +1,4 @@
+[![build status](https://secure.travis-ci.org/DTrejo/node-authors.png)](http://travis-ci.org/DTrejo/node-authors)
 # authors
 
 ## install
