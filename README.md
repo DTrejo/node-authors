@@ -13,17 +13,16 @@ $ authors
 Fetching 38 logins from github based on email/name...
 ......................................
 ## Contributors
-Ordered by date of first contribution.
-[Auto-generated](http://github.com/dtrejo/authors) on Sat Jul 07 2012 16:34:50 GMT-0700 (PDT).
+Ordered by date of first contribution. [Auto-generated](https://github.com/dtrejo/authors) on Sat Jul 07 2012 16:34:50 GMT.
 
-- [Matt Ranney aka `mranney`](https://github.com/mranney)
-- [Tim-Smart aka `tim-smart`](https://github.com/tim-smart)
-- [Tj Holowaychuk aka `visionmedia`](https://github.com/visionmedia)
+- [Matt Ranney](https://github.com/mranney) aka `mranney`
+- [Tim-Smart](https://github.com/tim-smart) aka `tim-smart`
+- [Tj Holowaychuk](https://github.com/visionmedia) aka `visionmedia`
 [...]
 ```
 
 ## Contributors
-Ordered by date of first contribution.
-[Auto-generated](http://github.com/dtrejo/node-authors) on Sat Jul 07 2012 16:54:45 GMT-0700 (PDT).
+Ordered by date of first contribution. [Auto-generated](https://github.com/dtrejo/node-authors) on Fri, 28 Dec 2012 03:19:00 GMT.
 
-- [David Trejo aka `DTrejo`](https://github.com/DTrejo)
+- [David Trejo](https://github.com/DTrejo) aka `DTrejo`
+- [XiNGRZ](https://github.com/xingrz) aka `xingrz`
