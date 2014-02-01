@@ -1,8 +1,11 @@
 {
   "name": "authors",
   "version": "0.0.2",
-  "description": "print a markdown list of authors/contributors to your git repo, including github usernames",
+  "description": "Generates a list of authors/contributors of an git repository with GitHub links.",
   "main": "index.js",
+  "bin": {
+    "authors": "./bin/authors"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -18,15 +21,9 @@
   "author": "David Trejo",
   "license": "MIT",
   "dependencies": {
-    "github": "~0.1.3",
-    "request": "~2.9.203",
-    "ms": "~0.1.0",
-    "underscore": "~1.3.3",
-    "async": "~0.1.22"
-  },
-  "preferGlobal": true,
-  "bin": {
-    "authors": "./bin/authors"
+    "request": "2.X",
+    "lodash": "2.X",
+    "async": "0.2.X"
   },
   "devDependencies": {},
   "repository": {
