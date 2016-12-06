@@ -19,11 +19,11 @@ $ authors
 
 ## Authors
 
-Ordered by date of first contribution. [Auto-generated](https://github.com/dtrejo/node-authors) on Wed, 25 Dec 2013 16:36:16 GMT.
+Ordered by date of first contribution. [Auto-generated](https://github.com/dtrejo/node-authors) on Tue, 06 Dec 2016 07:28:57 GMT.
 
 - [David Trejo](https://github.com/DTrejo) aka `DTrejo`
 - [XiNGRZ](https://github.com/xingrz) aka `xingrz`
-
+- [Björn Kimminich](https://github.com/bkimminich) aka `bkimminich`
 
 ## Hacking
 
@@ -48,7 +48,7 @@ $ npm link
 _TODO: tests is still missing..._
 
 ```
-$ make test
+$ npm test
 ```
 
 ### Committing a patch
