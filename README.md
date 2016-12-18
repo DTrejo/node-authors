@@ -1,5 +1,4 @@
-authors
-==========
+# authors [![JavaScript Style Guide](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/) [![npm Downloads](https://img.shields.io/npm/dm/authors.svg)](https://www.npmjs.com/package/authors)
 
 Generates a list of authors/contributors of an git repository with GitHub links.
 
